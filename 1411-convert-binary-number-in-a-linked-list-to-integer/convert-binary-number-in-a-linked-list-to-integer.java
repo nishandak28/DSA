@@ -23,8 +23,6 @@ class Solution {
             count *= 2;
         }
 
-        System.out.println(count);
-
         count /= 2;
 
         curr = head;
@@ -32,7 +30,6 @@ class Solution {
         while(curr != null) {
             res += curr.val * count;
             count /= 2;
-            System.out.println(count);
             curr = curr.next;
         }
 
