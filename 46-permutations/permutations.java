@@ -2,11 +2,11 @@ class Solution {
     List<List<Integer>> result;
     public List<List<Integer>> permute(int[] nums) {
         result = new ArrayList<>();
-        permutation(nums, new ArrayList<>(), new HashSet<>());
+        permutation(nums, new ArrayList<>(), new boolean[nums.length]);
         return result;
     }
 
-    public void permutation(int[] nums, List<Integer> li, HashSet<Integer> hs) {
+    public void permutation(int[] nums, List<Integer> li, boolean[] arr) {
 
         if(li.size() == nums.length) {
             result.add(new ArrayList<>(li));
@@ -14,11 +14,11 @@ class Solution {
         }
 
         for(int i = 0; i < nums.length; i++) {
-            if(!hs.contains(i)) {
+            if(!arr[i]) {
                 li.add(nums[i]);
-                hs.add(i);
-                permutation(nums, li, hs);
-                hs.remove(i);
+                arr[i] = true;
+                permutation(nums, li, arr);
+                arr[i] = false;
                 li.remove(li.size()-1);
             }
         }
