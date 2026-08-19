@@ -12,7 +12,7 @@ class Solution {
             return;
         }
 
-        for(int i = s; i <= n; i++) {
+        for(int i = s; i <= n - (k - li.size()) + 1; i++) {
             li.add(i);
             combination(i + 1, n , k, list, li);
             li.remove(li.size()-1);
