@@ -4,17 +4,19 @@ class Solution {
         int m = nums2.length;
 
         int[] arr = new int[n+m];
-        int k = 0;
-
-        for(int i = 0; i < n; i++) {
-            arr[k++] = nums1[i];
+        int i = 0,j = 0,k = 0;
+        
+        while(i < n && j < m) {
+            if(nums1[i] < nums2[j]) {
+                arr[k++] = nums1[i++];
+            } else {
+                arr[k++] = nums2[j++];
+            }
         }
 
-        for(int i = 0; i < m; i++) {
-            arr[k++] = nums2[i];
-        }
+        while(i < n)arr[k++] = nums1[i++];
+        while(j < m)arr[k++] = nums2[j++];
 
-        Arrays.sort(arr);
         int total = arr.length;
 
         if(total % 2 == 1) {
